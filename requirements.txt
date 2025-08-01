@@ -17,13 +17,13 @@ lxml>=4.9.0
 # Utility packages
 typing-extensions>=4.0.0
 
- Optional: For better performance and additional features
+ #Optional: For better performance and additional features
 # Uncomment if needed:
  opencv-python>=4.5.0  # For advanced image processing
  numpy>=1.21.0         # For numerical operations
  matplotlib>=3.5.0     # For plotting/visualization
 
- Development/Testing (optional)
+ #Development/Testing (optional)
  pytest>=7.0.0
  black>=22.0.0
 flake8>=4.0.0
