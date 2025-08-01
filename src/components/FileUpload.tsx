@@ -160,17 +160,17 @@ export function FileUpload() {
         <div
           {...getRootProps()}
           className={`
-            relative border-2 border-dashed rounded-xl p-12 text-center cursor-pointer transition-all duration-300
+            relative border-2 border-dashed rounded-3xl p-16 text-center cursor-pointer transition-all duration-500 backdrop-blur-xl
             ${isDragActive 
-              ? 'border-primary-400 bg-primary-50 dark:bg-primary-900/20 scale-105' 
-              : 'border-gray-300 dark:border-gray-600 hover:border-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+              ? 'border-blue-400 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 scale-105 shadow-2xl glow-effect' 
+              : 'border-gray-300/50 dark:border-gray-600/50 hover:border-blue-400 hover:bg-gradient-to-br hover:from-blue-50/50 hover:to-purple-50/50 dark:hover:from-blue-900/10 dark:hover:to-purple-900/10 hover:shadow-xl glass-effect'
             }
             ${isUploading ? 'pointer-events-none' : ''}
           `}
         >
           <input {...getInputProps()} />
           
-          <div className="space-y-6">
+          <div className="space-y-8">
             <motion.div 
               className="flex justify-center"
               animate={uploadStatus === 'processing' ? { rotate: 360 } : {}}
@@ -180,15 +180,15 @@ export function FileUpload() {
             </motion.div>
             
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-3xl font-bold gradient-text mb-4">
                 {getStatusText()}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                 {uploadStatus === 'idle' && (
                   <>
                     Drag and drop your PDF file here, or click to browse
                     <br />
-                    <span className="text-sm text-gray-500">Maximum file size: 50MB</span>
+                    <span className="text-base text-gray-500 dark:text-gray-400 font-medium">Maximum file size: 50MB</span>
                   </>
                 )}
               </p>
@@ -200,15 +200,15 @@ export function FileUpload() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
                   <motion.div 
-                    className="bg-gradient-to-r from-primary-500 to-primary-600 h-3 rounded-full"
+                    className="progress-bar h-4"
                     initial={{ width: 0 }}
                     animate={{ width: `${uploadProgress}%` }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.5 }}
                   />
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                <p className="text-base text-gray-600 dark:text-gray-300 font-semibold">
                   {uploadProgress}% complete
                 </p>
               </motion.div>
@@ -223,28 +223,28 @@ export function FileUpload() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <div className="card p-6 text-center card-hover">
-          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <div className="card p-8 text-center card-hover">
+          <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 glow-effect">
             <FileText className="w-6 h-6 text-white" />
           </div>
-          <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Smart Analysis</h4>
-          <p className="text-sm text-gray-600 dark:text-gray-300">AI-powered document analysis with intelligent summaries and key insights</p>
+          <h4 className="font-bold text-xl text-gray-900 dark:text-white mb-3">Smart Analysis</h4>
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">AI-powered document analysis with intelligent summaries and key insights</p>
         </div>
         
-        <div className="card p-6 text-center card-hover">
-          <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <div className="card p-8 text-center card-hover">
+          <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-6 glow-effect">
             <Brain className="w-6 h-6 text-white" />
           </div>
-          <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Study Materials</h4>
-          <p className="text-sm text-gray-600 dark:text-gray-300">Interactive flashcards, adaptive quizzes, and personalized Q&A assistance</p>
+          <h4 className="font-bold text-xl text-gray-900 dark:text-white mb-3">Study Materials</h4>
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">Interactive flashcards, adaptive quizzes, and personalized Q&A assistance</p>
         </div>
         
-        <div className="card p-6 text-center card-hover">
-          <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <div className="card p-8 text-center card-hover">
+          <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6 glow-effect">
             <Search className="w-6 h-6 text-white" />
           </div>
-          <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Smart Discovery</h4>
-          <p className="text-sm text-gray-600 dark:text-gray-300">Research papers, educational videos, and curated learning resources</p>
+          <h4 className="font-bold text-xl text-gray-900 dark:text-white mb-3">Smart Discovery</h4>
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">Research papers, educational videos, and curated learning resources</p>
         </div>
       </motion.div>
 
@@ -254,9 +254,9 @@ export function FileUpload() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.4 }}
       >
-        <div className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-full">
-          <Zap className="w-4 h-4 text-primary-600 dark:text-primary-400" />
-          <span className="text-sm font-medium text-primary-700 dark:text-primary-300">
+        <div className="inline-flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-full border border-blue-200/30 dark:border-purple-300/30 backdrop-blur-sm">
+          <Zap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+          <span className="text-base font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Powered by Advanced AI Technology
           </span>
         </div>

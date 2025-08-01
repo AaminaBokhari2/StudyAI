@@ -48,29 +48,44 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen transition-colors duration-300 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl floating-animation"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-indigo-400/20 to-pink-400/20 rounded-full blur-3xl floating-animation" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-purple-400/10 to-blue-400/10 rounded-full blur-3xl floating-animation" style={{ animationDelay: '4s' }}></div>
+      </div>
+      
       <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {!state.session.active ? (
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-4">
+            <div className="text-center mb-16 relative">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-32 h-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
+              </div>
+              <h1 className="text-6xl md:text-7xl font-bold gradient-text mb-6 relative z-10 tracking-tight">
                 AI Study Assistant
               </h1>
-              <p className="text-2xl text-gray-600 dark:text-gray-300 mb-2">
+              <div className="inline-block px-6 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm rounded-full border border-blue-200/30 dark:border-purple-300/30 mb-4">
+                <p className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Professional Edition
+                </p>
+              </div>
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
                 Professional Edition
               </p>
-              <p className="text-lg text-gray-500 dark:text-gray-400">
-                Transform your PDFs into comprehensive study materials with advanced AI technology
+              <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                Transform your documents into comprehensive study materials with cutting-edge AI technology. Create flashcards, quizzes, summaries, and discover related research—all powered by advanced machine learning.
               </p>
             </div>
             <FileUpload />
           </div>
         ) : (
-          <div className="space-y-6">
+          <div className="space-y-8">
             <StudyTabs />
-            <div className="animate-fade-in">
+            <div className="animate-fade-in relative">
               {renderTabContent()}
             </div>
           </div>
